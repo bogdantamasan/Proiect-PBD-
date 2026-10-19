@@ -1,4 +1,4 @@
--- Structura DDL pentru Baza de Date: Club Sportiv
+-- Script DDL pentru crearea tabelelor bazei de date (Club Sportiv)
 
 CREATE TABLE IF NOT EXISTS Sectii (
     ID_Sectie INTEGER PRIMARY KEY AUTOINCREMENT,

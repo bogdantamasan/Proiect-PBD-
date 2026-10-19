@@ -1,1 +1,37 @@
+UNIVERSITATEA TEHNICĂ
+FACULTATEA DE AUTOMATICĂ ȘI CALCULATOARE
+DISCIPLINA: PROIECTAREA BAZELOR DE DATE
+
+PROIECT DE SPECIALITATE
+TEMA: Aplicație pentru evidența și gestiunea activității dintr-un club sportiv 
+Specializarea: Calculatoare, Anul III
+Anul Universitar: 2026 - 2027
+CUPRINS
+1.	Scopul Proiectului
+2.	Obiectivele Sistemului
+3.	Proiectarea Bazei de Date
+o	3.1 Analiza Cerințelor 
+o	3.2 Modelul Conceptual (Diagrama ER) 
+o	3.3 Modelul Logic și Normalizarea 
+o	3.4 Modelul Fizic și Dicționarul de Date 
+4.	Aplicația Practică și Interogări SQL
+o	4.1 Scripturi DDL și DML 
+o	4.2 Cele 20 de Interogări SQL 
+o	4.3 Descrierea Aplicației CRUD Python 
+5.	Integrarea Componentei de Inteligență Artificială (ML)
+o	5.1 Scopul fluxului IA 
+o	5.2 Pregătirea setului de date și Antrenarea Modelului 
+o	5.3 Salvarea și interpretarea rezultatelor 
+6.	Concluzii și Îmbunătățiri Viitoare
+7.	Bibliografie
+1. SCOPUL PROIECTULUI
+Aplicația are ca scop automatizarea și eficientizarea gestiunii administrative dintr-un club sportiv modern. În mod tradițional, evidența membrilor, a încasărilor și a programărilor pe sectoare sportive se realiza manual sau prin intermediul foilor de calcul necentralizate, lucru care ducea la erori umane, pierderi de date și abonamente neactualizate. 
+Baza de date concepută centralizează datele despre membri, abonamente, secții sportive (fotbal, baschet, înot, tenis), antrenori și prezențe, oferind o soluție viabilă pentru managementul operațional. 
+2. OBIECTIVELE SISTEMULUI
+•	Gestiunea Membrilor: Înregistrarea sportivilor, urmărirea datelor de contact și a istoricului înscrierii. 
+•	Evidența Financiară & Abonamente: Gestionarea tipurilor de abonamente și urmărirea numărului de ședințe rămase per membru. 
+•	Planificarea Antrenamentelor: Organizarea ședințelor pe secții, repartizarea antrenorilor și monitorizarea prezențelor. 
+•	Raportare & Analiză (SQL): Extragerea de statistici privind veniturile, gradul de ocupare al secțiilor și performanța antrenorilor. 
+•	Model Predictiv (IA): Identificarea din timp a membrilor cu risc de abandonare a abonamentului (Churn Rate Prediction) folosind modele de Machine Learning. 
+
 

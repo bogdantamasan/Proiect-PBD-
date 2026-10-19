@@ -1,4 +1,5 @@
--- Creare tabele baza de date: Club Sportiv
+-- Structura DDL pentru Baza de Date: Club Sportiv
+
 CREATE TABLE IF NOT EXISTS Sectii (
     ID_Sectie INTEGER PRIMARY KEY AUTOINCREMENT,
     Nume_Sectie VARCHAR(50) NOT NULL,
@@ -60,14 +61,5 @@ CREATE TABLE IF NOT EXISTS Prezente (
     ID_Membru INT NOT NULL,
     Status VARCHAR(20) DEFAULT 'Prezent',
     FOREIGN KEY (ID_Programare) REFERENCES Programari(ID_Programare) ON DELETE CASCADE,
-    FOREIGN KEY (ID_Membru) REFERENCES Membri(ID_Membru) ON DELETE CASCADE
-);
-
-CREATE TABLE IF NOT EXISTS Rezultate_IA (
-    ID_Rezultat INTEGER PRIMARY KEY AUTOINCREMENT,
-    ID_Membru INT NOT NULL,
-    Sedinte_Asezate INT,
-    Risc_Renuntare_Predus INT CHECK (Risc_Renuntare_Predus IN (0, 1)),
-    Probabilitate_Risc DECIMAL(4, 2),
     FOREIGN KEY (ID_Membru) REFERENCES Membri(ID_Membru) ON DELETE CASCADE
 );

@@ -1,8 +1,14 @@
-# Proiect-PBD-
-# Aplicatie pentru Evidenta si Gestiunea Activitatii dintr-un Club Sportiv
+# Aplicație pentru Evidența și Gestiunea unui Club Sportiv
+**Proiect Baze de Date**
 
-**Specializare:** Calculatoare, Anul III
-**Disciplina:** Proiectarea Bazelor de Date (PBD)
+## Scop
+Proiectarea unei baze de date pentru administrarea membrilor, antrenorilor, abonamentelor și a programatorului de clase dintr-un club sportiv.
 
-## 📌 Descrierea Proiectului
-Proiectul gestionează activitățile dintr-un club sportiv: evidența membrilor, a antrenorilor, a secțiilor sportive, a abonamentelor și a prezențelor la antrenamente.
+## Obiective
+Sistemul permite operații CRUD pentru gestionarea înscrierilor, monitorizarea abonamentelor și organizarea antrenamentelor.
+
+## Structura Proiectului
+- `docs/`: Documentația proiectului
+- `db/`: Scripturi SQL și diagrame
+- `app/`: Aplicația practică conectată la BD
+- `teste/`: Scripturi pentru testarea constrângerilor

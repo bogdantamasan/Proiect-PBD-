@@ -1,5 +1,14 @@
 # Changelog
 
-## [v0.2-proiectare] - Etapa 2-4
-- Adăugarea analizei cerințelor și a modelului conceptual (Diagrama ER) în folderul `diagrams/`.
-- Crearea scripturilor DDL pentru structura tabelelor în `db/schema/01_create_tables.sql`.
+## [v0.2-proiectare] 
+### Adăugat
+- Analiza cerințelor pentru gestiunea clubului sportiv.
+- Modelul conceptual (Entități, Atribute, Chei).
+- Diagrama ER pentru club adăugată în db/diagrams.
+- Actualizare document Word cu etapele din Săptămânile 1-4.
+
+## [v0.1-analiza] 
+### Adăugat
+- Inițializare depozit GitHub și structură de directoare.
+- Creare fișiere de bază (README.md, CHANGELOG.md, .gitignore).
+- Definirea scopului și a obiectivelor pentru aplicația clubului sportiv.

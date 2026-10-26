@@ -12,3 +12,4 @@ Sistemul permite operații CRUD pentru gestionarea înscrierilor, monitorizarea 
 - `db/`: Scripturi SQL și diagrame
 - `app/`: Aplicația practică conectată la BD
 - `teste/`: Scripturi pentru testarea constrângerilor
+- 

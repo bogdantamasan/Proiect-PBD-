@@ -12,3 +12,6 @@
 - Inițializare depozit GitHub și structură de directoare.
 - Creare fișiere de bază (README.md, CHANGELOG.md, .gitignore).
 - Definirea scopului și a obiectivelor pentru aplicația clubului sportiv.
+
+## [v0.3-etapa5-6] 
+Adaugare model logic, normalizare FN3, dictionar date si set 10 diagrame

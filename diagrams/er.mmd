@@ -1,51 +1,80 @@
 erDiagram
-    MEMBRI ||--o{ ACHIZITII : achizitioneaza
-    ABONAMENTE ||--o{ ACHIZITII : include
-    MEMBRI ||--o{ PREZENTE : inregistreaza
-    PROGRAMARI ||--o{ PREZENTE : contine
-    SECTII ||--o{ PROGRAMARI : organizeaza
-    ANTRENOREI ||--o{ PROGRAMARI : sustine
+    %% ==========================================
+    %% ENTITĂȚI ȘI STRUCTURĂ TABELE
+    %% ==========================================
     SECTII {
         int ID_Sectie PK
-        string Nume_Sectie
+        string Nume_Sectie "NOT NULL"
         string Descriere
     }
-    ANTRENOREI {
+
+    ANTRENORI {
         int ID_Antrenor PK
-        string Nume
-        string Prenume
+        string Nume "NOT NULL"
+        string Prenume "NOT NULL"
         string Specializare
-        float Salariu
+        string Telefon
+        string Email "UNIQUE"
+        float Salariu "CHECK (Salariu > 0)"
     }
+
     MEMBRI {
         int ID_Membru PK
-        string Nume
-        string Prenume
+        string Nume "NOT NULL"
+        string Prenume "NOT NULL"
         date Data_Nasterii
-        string Email
+        string Telefon
+        string Email "UNIQUE"
+        date Data_Inscrierii "DEFAULT CURRENT_DATE"
     }
+
     ABONAMENTE {
         int ID_Abonament PK
-        string Tip_Abonament
-        float Pret
-        int Numar_Sedinte
+        string Tip_Abonament "NOT NULL"
+        float Pret "CHECK (Pret >= 0)"
+        int Numar_Sedinte "CHECK (Numar_Sedinte > 0)"
+        int Valabilitate_Luni "CHECK (Valabilitate_Luni > 0)"
     }
+
     ACHIZITII {
         int ID_Achizitie PK
         int ID_Membru FK
         int ID_Abonament FK
-        date Data_Inceput
-        int Sedinte_Ramas
+        date Data_Inceput "NOT NULL"
+        date Data_Sfarsit "NOT NULL"
+        int Sedinte_Ramas "NOT NULL"
     }
+
     PROGRAMARI {
         int ID_Programare PK
         int ID_Sectie FK
         int ID_Antrenor FK
-        datetime Data_Ora
+        datetime Data_Ora "NOT NULL"
+        string Locatie
     }
+
     PREZENTE {
         int ID_Prezenta PK
         int ID_Programare FK
         int ID_Membru FK
-        string Status
+        string Status "DEFAULT 'Prezent'"
     }
+
+    CHURN_PREDICTIONS {
+        int ID_Predictie PK
+        int ID_Membru FK
+        float Scor_Risc "0.0 - 1.0"
+        string Categorie_Risc "Scazut / Mediu / Ridicat"
+        date Data_Evaluare
+    }
+
+    %% ==========================================
+    %% RELAȚII RELAȚIONALE (1:N)
+    %% ==========================================
+    SECTII ||--o{ PROGRAMARI : "organizeaza (1:N)"
+    ANTRENORI ||--o{ PROGRAMARI : "sustine (1:N)"
+    MEMBRI ||--o{ ACHIZITII : "efectueaza (1:N)"
+    ABONAMENTE ||--o{ ACHIZITII : "include (1:N)"
+    MEMBRI ||--o{ PREZENTE : "inregistreaza (1:N)"
+    PROGRAMARI ||--o{ PREZENTE : "contine (1:N)"
+    MEMBRI ||--o{ CHURN_PREDICTIONS : "evalueaza_risc (1:N)"

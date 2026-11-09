@@ -1,18 +1,20 @@
--- Script de testare a constrângerilor de integritate (Trebuie să returneze erori la rulare)
+-- ATENȚIE: Aceste comenzi trebuie să genereze ERORI la rulare!
+-- ==========================================
 
--- Test 1: Salariu negativ la Antrenor (Dezactivează CHECK constraint)
--- Așteptat: ERROR - CHECK constraint failed: Salariu > 0
-INSERT INTO Antrenori (Nume, Prenume, Specializare, Salariu) 
-VALUES ('Test', 'Invalida', 'Tenis', -1500);
+-- TEST 1: Încercare de inserare salariu negativ (Respins de chk_antrenor_salariu)
+INSERT INTO Antrenori (Nume, Prenume, Specializare, Email, Salariu) 
+VALUES ('Test', 'Gresit', 'Tenis', 'test1@club.ro', -500.00);
 
--- Test 2: Email duplicat la Membru (Dezactivează UNIQUE constraint)
--- Așteptat: ERROR - UNIQUE constraint failed: Membri.Email
-INSERT INTO Membri (Nume, Prenume, Email) 
-VALUES ('Popescu', 'Ion', 'bogdan.tamasan@email.com');
-INSERT INTO Membri (Nume, Prenume, Email) 
-VALUES ('Ionescu', 'Dan', 'bogdan.tamasan@email.com');
+-- TEST 2: Încercare de inserare email duplicat (Respins de uk_membru_email)
+-- (andrei.p@email.com a fost deja inserat in seed data)
+INSERT INTO Membri (Nume, Prenume, Data_Nasterii, Email) 
+VALUES ('Impostor', 'Andrei', '2000-01-01', 'andrei.p@email.com');
 
--- Test 3: Inserare achiziție cu Membru inexistent (Dezactivează FOREIGN KEY constraint)
--- Așteptat: ERROR - FOREIGN KEY constraint failed
+-- TEST 3: Încercare de inserare Status greșit la prezență (Respins de chk_status_prezenta)
+INSERT INTO Prezente (ID_Programare, ID_Membru, Status) 
+VALUES (1, 1, 'Invoit_Din_Greseala');
+
+-- TEST 4: Încercare de inserare referință invalidă (Respins de FOREIGN KEY)
+-- Membrul cu ID 999 nu există
 INSERT INTO Achizitii (ID_Membru, ID_Abonament, Data_Inceput, Data_Sfarsit, Sedinte_Ramas) 
-VALUES (9999, 1, '2026-01-01', '2026-02-01', 10);
+VALUES (999, 1, '2026-11-01', '2026-12-01', 10);

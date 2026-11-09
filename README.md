@@ -36,3 +36,30 @@ Sistemul rezolvă aceste probleme prin automatizarea fluxurilor de date, validar
 * Interogarea avansată a datelor prin 20 de interogări SQL complexe (`JOIN`, `GROUP BY`, `HAVING`, subinterogări).
 
 ---
+## 📂 3. Structura Depozitului
+
+```text
+proiect-bd/
+├── README.md
+├── CHANGELOG.md
+├── .gitignore
+├── docs/
+│   └── Tamasan_Bogdan_Proiect_BD.docx     # Documentația completă Word
+├── db/
+│   ├── schema/
+│   │   ├── 01_create_tables.sql           # Structura DDL a tabelelor
+│   │   ├── 02_constraints.sql             # Constrângeri CHECK și UNIQUE
+│   │   └── 03_indexes.sql                 # Indecși pentru optimizarea performanței
+│   ├── seed/
+│   │   └── 01_insert_date.sql             # Date de test pentru populare (10+ înregistrări/tabel)
+│   ├── queries/
+│   │   └── 01_interogari_complexe.sql     # Cele 20 de interogări SQL 
+│   └── views/
+│       └── 01_create_views.sql            # View-uri pentru statistici
+├── diagrams/                              # Modele ER și fluxuri (Mermaid .mmd)
+├── teste/
+│   └── teste_constrangeri.sql             # Script pentru testarea inserărilor invalide
+└── app/
+    ├── main.py                            # Aplicația Python CRUD 
+    ├── ml_script.py                       # Modulul de predicție ML (Churn)
+    └── requirements.txt                   # Dependențe Python

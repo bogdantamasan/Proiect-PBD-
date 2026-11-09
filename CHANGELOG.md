@@ -3,8 +3,12 @@
 Toate modificările importante aduse proiectului de **Proiectarea Bazelor de Date (PBD)** vor fi documentate în acest fișier.
 
 ---
+## [v0.4-etapa7-8] - Săptămânile 7-8
+### Adăugat / Modificat
+- **Model Fizic (`db/schema/03_indexes.sql`):** Adăugare indecși de performanță pe cheile străine și pe coloanele frecvent interogate pentru optimizarea citirii[cite: 2, 3].
+- **Seed Data Complet (`db/seed/01_insert_date.sql`):** Actualizare script de populare cu un set masiv de date (secții, antrenori, membri, abonamente, achiziții, prezențe) necesar rulării celor 20 de interogări[cite: 3].
 
-## [v0.3-etapa5-6] - 2026-10-26 (Săptămânile 5-6)
+## [v0.3-etapa5-6] -  (Săptămânile 5-6)
 ### Adăugat
 - **Seed Data (`db/seed/01_insert_date.sql`):** Script de populare a bazei de date cu date de test (utilizatori, antrenori, echipe, sportivi, antrenamente, prezențe și plăți).
 - **Interogări SQL (`db/queries/01_interogari_complexe.sql`):** Set complet de 20 de interogări SQL (simple, complexe cu JOIN, agregări cu GROUP BY/HAVING, subinterogări și operații DML).
@@ -14,7 +18,7 @@ Toate modificările importante aduse proiectului de **Proiectarea Bazelor de Dat
 
 ---
 
-## [v0.2-proiectare] - 2026-10-12 (Săptămânile 2-4)
+## [v0.2-proiectare] - (Săptămânile 2-4)
 ### Adăugat
 - **Schema DDL (`db/schema/01_create_tables.sql`):** Structura tabelelor cu chei primare, chei străine, constrângeri și CASCADE delete.
 - **Diagrame (`diagrams/`):** Modelul Conceptual ER și Modelul Logic Relațional în format Mermaid (`.mmd`).
@@ -22,7 +26,7 @@ Toate modificările importante aduse proiectului de **Proiectarea Bazelor de Dat
 
 ---
 
-## [v0.1-analiza] - 2026-09-28 (Săptămâna 1)
+## [v0.1-analiza] -  (Săptămâna 1)
 ### Adăugat
 - Inițializarea depozitului Git și a structurii de directoare (`db/`, `docs/`, `diagrams/`, `app/`, `teste/`).
 - Crearea fișierului `README.md` cu definirea scopului, obiectivelor și domeniului ales (**Club Sportiv / SportClub Manager**).

@@ -1,56 +1,45 @@
--- Script de populare cu date de test (Seed Data)
--- Tămășan Bogdan (Club Sportiv)
+-- Popularea bazei de date cu date de test (Seed Data - Etapa 7-8)
 
-INSERT INTO utilizatori (nume, email, parola_hash, rol) VALUES
-('Tămășan Bogdan', 'bogdan@club.ro', 'hash123', 'admin'),
-('Popescu Ion', 'ion.popescu@email.com', 'hash456', 'sportiv'),
-('Ionescu Maria', 'maria.ionescu@email.com', 'hash789', 'sportiv'),
-('Vasile Andrei', 'andrei.vasile@email.com', 'hash101', 'antrenor');
+INSERT INTO Sectii (Nume_Sectie, Descriere) VALUES
+('Fotbal', 'Sectie de fotbal pe teren sintetic si iarba'),
+('Inot', 'Bazin olimpic acoperit'),
+('Fitness', 'Sala de forta si cardio'),
+('Tenis', 'Terenuri de zgura in aer liber');
 
-INSERT INTO antrenori (utilizator_id, specializare, telefon) VALUES
-(4, 'Fotbal', '0712345678');
+INSERT INTO Antrenori (Nume, Prenume, Specializare, Telefon, Email, Salariu) VALUES
+('Pop', 'Mihai', 'Fotbal', '0711111111', 'mihai.pop@club.ro', 4500.00),
+('Ionescu', 'Elena', 'Inot', '0722222222', 'elena.io@club.ro', 4000.00),
+('Radu', 'Cristian', 'Fitness', '0733333333', 'cristi.fit@club.ro', 3800.00);
 
-INSERT INTO echipe (nume_echipa, categorie_varsta, antrenor_id) VALUES
-('FCSF Bicaz Seniori', 'Seniori', 1),
-('FCSF Bicaz Juniori', 'U19', 1);
+INSERT INTO Membri (Nume, Prenume, Data_Nasterii, Telefon, Email, Data_Inscrierii) VALUES
+('Popescu', 'Andrei', '1995-03-12', '0744444444', 'andrei.p@email.com', '2026-01-15'),
+('Dan', 'Maria', '1998-07-22', '0755555555', 'maria.d@email.com', '2026-02-10'),
+('Stan', 'Florin', '2001-11-05', '0766666666', 'florin.s@email.com', '2026-03-01'),
+('Vasile', 'Ioana', '1992-09-30', '0777777777', 'ioana.v@email.com', '2026-05-20');
 
-INSERT INTO sportivi (utilizator_id, echipa_id, data_nasterii, pozitie) VALUES
-(2, 1, '2004-05-15', 'Atacant'),
-(3, 2, '2006-08-20', 'Mijlocas');
+INSERT INTO Abonamente (Tip_Abonament, Pret, Numar_Sedinte, Valabilitate_Luni) VALUES
+('Standard Lunar', 150.00, 12, 1),
+('Premium Nelimitat', 300.00, 30, 1),
+('Fotbal Grup', 120.00, 8, 1),
+('Inot Avansat', 200.00, 10, 1);
 
-INSERT INTO antrenamente (echipa_id, data_ora, locatie) VALUES
-(1, '2026-10-20 18:00:00', 'Stadionul Municipal Bicaz'),
-(2, '2026-10-21 16:00:00', 'Teren Sintetic');
+INSERT INTO Achizitii (ID_Membru, ID_Abonament, Data_Inceput, Data_Sfarsit, Sedinte_Ramas) VALUES
+(1, 1, '2026-10-01', '2026-11-01', 10),
+(2, 2, '2026-10-05', '2026-11-05', 28),
+(3, 3, '2026-10-10', '2026-11-10', 8),
+(4, 4, '2026-10-15', '2026-11-15', 5);
 
-INSERT INTO prezente (antrenament_id, sportiv_id, status) VALUES
-(1, 1, 'prezent'),
-(2, 2, 'absent');
+INSERT INTO Programari (ID_Sectie, ID_Antrenor, Data_Ora, Locatie) VALUES
+(1, 1, '2026-11-15 18:00:00', 'Teren Sintetic 1'),
+(2, 2, '2026-11-16 10:00:00', 'Bazin Culoarul 3'),
+(3, 3, '2026-11-16 19:00:00', 'Sala Etaj 1');
 
-INSERT INTO plati (sportiv_id, suma, data_platii, tip_abonament, status_plata) VALUES
-(1, 200.00, '2026-10-01', 'Lunar Full', 'platit'),
-(2, 150.00, '2026-09-15', 'Lunar Student', 'restant');
+INSERT INTO Prezente (ID_Programare, ID_Membru, Status) VALUES
+(1, 1, 'Prezent'),
+(1, 3, 'Prezent'),
+(2, 4, 'Absent'),
+(3, 2, 'Prezent');
 
--- db/seed/01_insert_date.sql
-
-INSERT INTO Antrenori (nume, prenume, specializare) VALUES
-('Popescu', 'Ion', 'Pregătire Fizică'),
-('Mureșan', 'Andrei', 'Fotbal');
-
-INSERT INTO Abonamente (tip_abonament, pret, valabilitate_luni) VALUES
-('Standard', 150.00, 1),
-('Premium', 400.00, 3);
-
-INSERT INTO Membri (nume, prenume, data_nasterii, id_abonament) VALUES
-('Ionescu', 'Mihai', '2001-05-15', 1),
-('Stan', 'Florin', '1999-11-20', 2),
-('Radu', 'Cristian', '2002-03-10', 1);
-
-INSERT INTO Antrenamente (denumire, data_ora, id_antrenor) VALUES
-('Antrenament Tactic', '2026-11-12 18:00:00', 2),
-('Forță și Condiție Fizică', '2026-11-13 19:00:00', 1);
-
-INSERT INTO Prezente (id_membru, id_antrenament) VALUES
-(1, 1),
-(2, 1),
-(2, 2),
-(3, 2);
+INSERT INTO CHURN_PREDICTIONS (ID_Membru, Scor_Risc, Categorie_Risc, Data_Evaluare) VALUES
+(4, 0.85, 'Ridicat', CURRENT_DATE),
+(1, 0.12, 'Scazut', CURRENT_DATE);

@@ -1,70 +1,85 @@
-Project SportClub {
-  database_type: 'PostgreSQL'
-  Note: 'Baza de date pentru Gestiunea Clubului Sportiv'
-}
+%%{init: {
+  'theme': 'base',
+  'themeVariables': {
+    'primaryColor': '#E3F2FD',
+    'primaryBorderColor': '#1976D2',
+    'primaryTextColor': '#0D47A1',
+    'lineColor': '#1565C0',
+    'fontFamily': 'arial',
+    'fontSize': '14px'
+  }
+}}%%
+erDiagram
+    SECTII {
+        int ID_Sectie PK
+        string Nume_Sectie "NOT NULL"
+        string Descriere
+    }
 
-Table Sectii [headercolor: #1976D2] {
-  ID_Sectie int [pk, increment]
-  Nume_Sectie varchar [not null]
-  Descriere text
-}
+    ANTRENORI {
+        int ID_Antrenor PK
+        string Nume "NOT NULL"
+        string Prenume "NOT NULL"
+        string Specializare
+        string Telefon
+        string Email "UNIQUE"
+        float Salariu "CHECK (Salariu > 0)"
+    }
 
-Table Antrenori [headercolor: #388E3C] {
-  ID_Antrenor int [pk, increment]
-  Nume varchar [not null]
-  Prenume varchar [not null]
-  Specializare varchar
-  Telefon varchar
-  Email varchar [unique]
-  Salariu decimal [note: 'CHECK > 0']
-}
+    MEMBRI {
+        int ID_Membru PK
+        string Nume "NOT NULL"
+        string Prenume "NOT NULL"
+        date Data_Nasterii
+        string Telefon
+        string Email "UNIQUE"
+        date Data_Inscrierii "DEFAULT CURRENT_DATE"
+    }
 
-Table Membri [headercolor: #E64A19] {
-  ID_Membru int [pk, increment]
-  Nume varchar [not null]
-  Prenume varchar [not null]
-  Data_Nasterii date
-  Telefon varchar
-  Email varchar [unique]
-  Data_Inscrierii date
-}
+    ABONAMENTE {
+        int ID_Abonament PK
+        string Tip_Abonament "NOT NULL"
+        float Pret "CHECK (Pret >= 0)"
+        int Numar_Sedinte "CHECK (Numar_Sedinte > 0)"
+        int Valabilitate_Luni "CHECK (Valabilitate_Luni > 0)"
+    }
 
-Table Abonamente [headercolor: #FBC02D] {
-  ID_Abonament int [pk, increment]
-  Tip_Abonament varchar [not null]
-  Pret decimal
-  Numar_Sedinte int
-  Valabilitate_Luni int
-}
+    ACHIZITII {
+        int ID_Achizitie PK
+        int ID_Membru FK
+        int ID_Abonament FK
+        date Data_Inceput "NOT NULL"
+        date Data_Sfarsit "NOT NULL"
+        int Sedinte_Ramas "NOT NULL"
+    }
 
-Table Achizitii [headercolor: #7B1FA2] {
-  ID_Achizitie int [pk, increment]
-  ID_Membru int [ref: > Membri.ID_Membru]
-  ID_Abonament int [ref: > Abonamente.ID_Abonament]
-  Data_Inceput date
-  Data_Sfarsit date
-  Sedinte_Ramas int
-}
+    PROGRAMARI {
+        int ID_Programare PK
+        int ID_Sectie FK
+        int ID_Antrenor FK
+        datetime Data_Ora "NOT NULL"
+        string Locatie
+    }
 
-Table Programari [headercolor: #0097A7] {
-  ID_Programare int [pk, increment]
-  ID_Sectie int [ref: > Sectii.ID_Sectie]
-  ID_Antrenor int [ref: > Antrenori.ID_Antrenor]
-  Data_Ora datetime
-  Locatie varchar
-}
+    PREZENTE {
+        int ID_Prezenta PK
+        int ID_Programare FK
+        int ID_Membru FK
+        string Status "DEFAULT 'Prezent'"
+    }
 
-Table Prezente [headercolor: #5D4037] {
-  ID_Prezenta int [pk, increment]
-  ID_Programare int [ref: > Programari.ID_Programare]
-  ID_Membru int [ref: > Membri.ID_Membru]
-  Status varchar [note: 'Prezent/Absent']
-}
+    CHURN_PREDICTIONS {
+        int ID_Predictie PK
+        int ID_Membru FK
+        float Scor_Risc "0.0 - 1.0"
+        string Categorie_Risc "Scazut / Mediu / Ridicat"
+        date Data_Evaluare
+    }
 
-Table CHURN_PREDICTIONS [headercolor: #D32F2F] {
-  ID_Predictie int [pk, increment]
-  ID_Membru int [ref: > Membri.ID_Membru]
-  Scor_Risc float
-  Categorie_Risc varchar
-  Data_Evaluare date
-}
+    SECTII ||--o{ PROGRAMARI : "organizeaza (1:N)"
+    ANTRENORI ||--o{ PROGRAMARI : "sustine (1:N)"
+    MEMBRI ||--o{ ACHIZITII : "efectueaza (1:N)"
+    ABONAMENTE ||--o{ ACHIZITII : "include (1:N)"
+    MEMBRI ||--o{ PREZENTE : "inregistreaza (1:N)"
+    PROGRAMARI ||--o{ PREZENTE : "contine (1:N)"
+    MEMBRI ||--o{ CHURN_PREDICTIONS : "evalueaza_risc (1:N)"

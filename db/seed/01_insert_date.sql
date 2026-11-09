@@ -29,3 +29,28 @@ INSERT INTO prezente (antrenament_id, sportiv_id, status) VALUES
 INSERT INTO plati (sportiv_id, suma, data_platii, tip_abonament, status_plata) VALUES
 (1, 200.00, '2026-10-01', 'Lunar Full', 'platit'),
 (2, 150.00, '2026-09-15', 'Lunar Student', 'restant');
+
+-- db/seed/01_insert_date.sql
+
+INSERT INTO Antrenori (nume, prenume, specializare) VALUES
+('Popescu', 'Ion', 'Pregătire Fizică'),
+('Mureșan', 'Andrei', 'Fotbal');
+
+INSERT INTO Abonamente (tip_abonament, pret, valabilitate_luni) VALUES
+('Standard', 150.00, 1),
+('Premium', 400.00, 3);
+
+INSERT INTO Membri (nume, prenume, data_nasterii, id_abonament) VALUES
+('Ionescu', 'Mihai', '2001-05-15', 1),
+('Stan', 'Florin', '1999-11-20', 2),
+('Radu', 'Cristian', '2002-03-10', 1);
+
+INSERT INTO Antrenamente (denumire, data_ora, id_antrenor) VALUES
+('Antrenament Tactic', '2026-11-12 18:00:00', 2),
+('Forță și Condiție Fizică', '2026-11-13 19:00:00', 1);
+
+INSERT INTO Prezente (id_membru, id_antrenament) VALUES
+(1, 1),
+(2, 1),
+(2, 2),
+(3, 2);

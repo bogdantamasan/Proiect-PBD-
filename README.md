@@ -7,7 +7,7 @@
 
 ---
 
-## 📌 1. Scope & Motivativă (Scopul Proiectului)
+## 📌 1. Scopul Proiectului
 Proiectul își propune proiectarea și implementarea unei baze de date relaționale destinate gestionării integrate a activităților operative dintr-un **Club Sportiv**. 
 
 În absența unui sistem centralizat, clubul se confruntă cu:

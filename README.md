@@ -8,7 +8,7 @@
 ---
 
 ## 📌 1. Scope & Motivativă (Scopul Proiectului)
-Proiectul își propune proiectarea și implementarea unei baze de date relaționale destinate gestionării integrate a activităților operative dintr-un **Club Sportiv**[cite: 1, 2]. 
+Proiectul își propune proiectarea și implementarea unei baze de date relaționale destinate gestionării integrate a activităților operative dintr-un **Club Sportiv**. 
 
 În absența unui sistem centralizat, clubul se confruntă cu:
 * Evidența greoaie a abonamentelor active și a ședințelor rămase.
@@ -16,7 +16,7 @@ Proiectul își propune proiectarea și implementarea unei baze de date relațio
 * Dificultatea urmăririi prezenței membrilor la antrenamente.
 * Imposibilitatea efectuării unei analize predictive privind retenția membrilor.
 
-Sistemul rezolvă aceste probleme prin automatizarea fluxurilor de date, validarea constrângerilor de integritate referențială și oferirea unui modul analitic de clasificare/predicție[cite: 2, 3].
+Sistemul rezolvă aceste probleme prin automatizarea fluxurilor de date, validarea constrângerilor de integritate referențială și oferirea unui modul analitic de clasificare/predicție.
 
 ---
 
@@ -30,9 +30,9 @@ Sistemul rezolvă aceste probleme prin automatizarea fluxurilor de date, validar
 5. **Integrare IA / Machine Learning:** Predicția riscului de abandon (Churn Risk) în funcție de numărul de ședințe efectuate și starea abonamentului.
 
 ### 🔹 Obiective Tehnice
-* Normalizarea schemei relaționale până la **Forma Normală 3 (FN3)**[cite: 2, 3].
+* Normalizarea schemei relaționale până la **Forma Normală 3 (FN3)**.
 * Implementarea constrângerilor de integritate (`NOT NULL`, `UNIQUE`, `CHECK`, `FOREIGN KEY ON DELETE CASCADE`).
-* Crearea unei aplicații client CRUD în Python conectată la SQLite/PostgreSQL[cite: 2, 3].
+* Crearea unei aplicații client CRUD în Python conectată la SQLite/PostgreSQL.
 * Interogarea avansată a datelor prin 20 de interogări SQL complexe (`JOIN`, `GROUP BY`, `HAVING`, subinterogări).
 
 ---

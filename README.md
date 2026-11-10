@@ -1,4 +1,4 @@
-# 🏋️‍♂️ Aplicație pentru Evidența și Gestiunea Activității dintr-un Club Sportiv
+#  Aplicație pentru Evidența și Gestiunea Activității dintr-un Club Sportiv
 
 **Student:** Tămășan Bogdan  
 **Specializare:** Calculatoare, Anul III
@@ -7,7 +7,7 @@
 
 ---
 
-## 📌 1. Scopul Proiectului
+##  1. Scopul Proiectului
 Proiectul își propune proiectarea și implementarea unei baze de date relaționale destinate gestionării integrate a activităților operative dintr-un **Club Sportiv**. 
 
 În absența unui sistem centralizat, clubul se confruntă cu:
@@ -20,23 +20,23 @@ Sistemul rezolvă aceste probleme prin automatizarea fluxurilor de date, validar
 
 ---
 
-## 🎯 2. Obiectivele Proiectului
+##  2. Obiectivele Proiectului
 
-### 🔹 Obiective Funcționale
+###  Obiective Funcționale
 1. **Gestiunea Membrilor & Antrenorilor:** Evidența datelor personale, contactelor și atribuțiilor speciale.
 2. **Managementul Secțiilor Sportive:** Organizarea antrenamentelor pe categorii (Fotbal, Baschet, Înot, Tenis etc.).
 3. **Gestiunea Abonamentelor & Achizițiilor:** Monitorizarea datelor de expirare, a prețurilor și a numărului de ședințe disponibile.
 4. **Programări & Prezențe:** Alocarea pe săli/antrenori și contorizarea automată a prezenței sportivilor.
 5. **Integrare IA / Machine Learning:** Predicția riscului de abandon (Churn Risk) în funcție de numărul de ședințe efectuate și starea abonamentului.
 
-### 🔹 Obiective Tehnice
+###  Obiective Tehnice
 * Normalizarea schemei relaționale până la **Forma Normală 3 (FN3)**.
 * Implementarea constrângerilor de integritate (`NOT NULL`, `UNIQUE`, `CHECK`, `FOREIGN KEY ON DELETE CASCADE`).
 * Crearea unei aplicații client CRUD în Python conectată la SQLite/PostgreSQL.
 * Interogarea avansată a datelor prin 20 de interogări SQL complexe (`JOIN`, `GROUP BY`, `HAVING`, subinterogări).
 
 ---
-## 📂 3. Structura Depozitului
+##  3. Structura Depozitului
 
 ```text
 proiect-bd/

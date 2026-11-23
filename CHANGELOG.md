@@ -2,13 +2,19 @@
 
 Toate modificările importante aduse proiectului de **Proiectarea Bazelor de Date (PBD)** vor fi documentate în acest fișier.
 
+## [v0.5-etapa9-10] 
+- Adăugat aplicația CRUD în Python (`app/main.py` și `app/requirements.txt`).
+- Adăugat scriptul de testare a constrângerilor (`teste/teste_constrangeri.sql`).
+- Adăugat view-uri dedicate în `db/views/01_views.sql`.
+- Actualizat documentația Word (`docs/Tamasan_Bogdan_Proiect_BD.docx`) cu Capitolul 8 și formatarea cerută.
+
 ---
-## [v0.4-etapa7-8] - Săptămânile 7-8
+## [v0.4-etapa7-8] 
 ### Adăugat / Modificat
 - **Model Fizic (`db/schema/03_indexes.sql`):** Adăugare indecși de performanță pe cheile străine și pe coloanele frecvent interogate pentru optimizarea citirii[cite: 2, 3].
 - **Seed Data Complet (`db/seed/01_insert_date.sql`):** Actualizare script de populare cu un set masiv de date (secții, antrenori, membri, abonamente, achiziții, prezențe) necesar rulării celor 20 de interogări[cite: 3].
 
-## [v0.3-etapa5-6] -  (Săptămânile 5-6)
+## [v0.3-etapa5-6] 
 ### Adăugat
 - **Seed Data (`db/seed/01_insert_date.sql`):** Script de populare a bazei de date cu date de test (utilizatori, antrenori, echipe, sportivi, antrenamente, prezențe și plăți).
 - **Interogări SQL (`db/queries/01_interogari_complexe.sql`):** Set complet de 20 de interogări SQL (simple, complexe cu JOIN, agregări cu GROUP BY/HAVING, subinterogări și operații DML).

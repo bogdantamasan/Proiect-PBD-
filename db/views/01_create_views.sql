@@ -1,26 +1,17 @@
--- View pentru Membri cu Abonamente Active
-CREATE VIEW IF NOT EXISTS v_membri_activi AS
-SELECT 
-    m.ID_Membru,
-    m.Nume || ' ' || m.Prenume AS Nume_Complet,
-    m.Email,
-    a.Tip_Abonament,
-    ach.Sedinte_Ramas,
-    ach.Data_Sfarsit
-FROM Membri m
-JOIN Achizitii ach ON m.ID_Membru = ach.ID_Membru
-JOIN Abonamente a ON ach.ID_Abonament = a.ID_Abonament
-WHERE ach.Sedinte_Ramas > 0 AND ach.Data_Sfarsit >= CURRENT_DATE;
+-- db/views/01_views.sql
 
--- View pentru Statistica Antrenorilor
-CREATE VIEW IF NOT EXISTS v_statistici_antrenori AS
-SELECT 
-    ant.ID_Antrenor,
-    ant.Nume || ' ' || ant.Prenume AS Antrenor,
-    ant.Specializare,
-    COUNT(DISTINCT p.ID_Programare) AS Total_Programari,
-    COUNT(prez.ID_Prezenta) AS Total_Prezente_Sportivi
-FROM Antrenori ant
-LEFT JOIN Programari p ON ant.ID_Antrenor = p.ID_Antrenor
-LEFT JOIN Prezente prez ON p.ID_Programare = prez.ID_Programare
-GROUP BY ant.ID_Antrenor, ant.Nume, ant.Prenume, ant.Specializare;
+CREATE VIEW Program_Club AS
+SELECT ant.id_antrenament, ant.data_ora, c.nume_categorie, s.nume_sala,
+       a.nume AS nume_antrenor, a.prenume AS prenume_antrenor
+FROM Antrenamente ant
+JOIN Categorii_Antrenamente c ON ant.id_categorie = c.id_categorie
+JOIN Sali s ON ant.id_sala = s.id_sala
+JOIN Antrenori a ON ant.id_antrenor = a.id_antrenor;
+
+CREATE VIEW Situatie_Membri_Plati AS
+SELECT m.id_membru, m.nume, m.prenume, a.tip_abonament,
+       COUNT(p.id_plata) AS numar_plati, COALESCE(SUM(p.suma), 0) AS total_achitat
+FROM Membri m
+LEFT JOIN Abonamente a ON m.id_abonament = a.id_abonament
+LEFT JOIN Plati p ON m.id_membru = p.id_membru
+GROUP BY m.id_membru, m.nume, m.prenume, a.tip_abonament;

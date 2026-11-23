@@ -1,20 +1,23 @@
--- ATENȚIE: Aceste comenzi trebuie să genereze ERORI la rulare!
--- ==========================================
+-- teste/teste_constrangeri.sql
+-- Script pentru verificarea constrangerilor de integritate (NOT NULL, CHECK, UNIQUE, FK, CASCADE)
 
--- TEST 1: Încercare de inserare salariu negativ (Respins de chk_antrenor_salariu)
-INSERT INTO Antrenori (Nume, Prenume, Specializare, Email, Salariu) 
-VALUES ('Test', 'Gresit', 'Tenis', 'test1@club.ro', -500.00);
+-- 1. Test CHECK: Nota trebuie sa fie intre 1 si 5 (EROARE ASTEPTATA)
+INSERT INTO Evaluari_Antrenori (id_membru, id_antrenor, nota, comentariu)
+VALUES (1, 1, 7, 'Nota in afara intervalului permis');
 
--- TEST 2: Încercare de inserare email duplicat (Respins de uk_membru_email)
--- (andrei.p@email.com a fost deja inserat in seed data)
-INSERT INTO Membri (Nume, Prenume, Data_Nasterii, Email) 
-VALUES ('Impostor', 'Andrei', '2000-01-01', 'andrei.p@email.com');
+-- 2. Test NOT NULL: Numele membrului nu poate fi NULL (EROARE ASTEPTATA)
+INSERT INTO Membri (nume, prenume, data_nasterii, id_abonament)
+VALUES (NULL, 'Alexandru', '2000-01-01', 1);
 
--- TEST 3: Încercare de inserare Status greșit la prezență (Respins de chk_status_prezenta)
-INSERT INTO Prezente (ID_Programare, ID_Membru, Status) 
-VALUES (1, 1, 'Invoit_Din_Greseala');
+-- 3. Test FOREIGN KEY: Plata pentru un membru inexistent (EROARE ASTEPTATA)
+INSERT INTO Plati (id_membru, suma, data_platii, metoda_plata)
+VALUES (9999, 150.00, '2026-11-23', 'Card');
 
--- TEST 4: Încercare de inserare referință invalidă (Respins de FOREIGN KEY)
--- Membrul cu ID 999 nu există
-INSERT INTO Achizitii (ID_Membru, ID_Abonament, Data_Inceput, Data_Sfarsit, Sedinte_Ramas) 
-VALUES (999, 1, '2026-11-01', '2026-12-01', 10);
+-- 4. Test UNIQUE: Categorie de antrenament duplicata (EROARE ASTEPTATA)
+INSERT INTO Categorii_Antrenamente (nume_categorie)
+VALUES ('Fotbal');
+
+-- 5. Test ON DELETE CASCADE: Stergerea unui membru elimina automat platile si prezentele lui
+DELETE FROM Membri WHERE id_membru = 1;
+SELECT * FROM Plati WHERE id_membru = 1;
+SELECT * FROM Prezente WHERE id_membru = 1;
